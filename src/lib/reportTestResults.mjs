@@ -35,6 +35,10 @@ function condenseTestResultVerdicts(test_results) {
 	return ret.join("")
 }
 
+function indent(text) {
+	return `\n${text}`.split("\n").join("\n    ") + "\n"
+}
+
 export default function(jtest_session, test, test_results) {
 	const final_verdict = determineFinalVerdict(test_results)
 
@@ -60,11 +64,11 @@ export default function(jtest_session, test, test_results) {
 		if (jtest_session.options.collapsed) continue
 
 		if (result.has_error_occurred_during_testing) {
-			process.stderr.write(`\u001b[0;33m${result.error}\u001b[0;0m\n`)
+			process.stderr.write(`\u001b[0;33m${indent(result.error)}\u001b[0;0m\n`)
 		} else if (result.verdict === "fail") {
-			process.stderr.write(`\u001b[0;31m${result.error}\u001b[0;0m\n`)
+			process.stderr.write(`\u001b[0;31m${indent(result.error)}\u001b[0;0m\n`)
 		} else if (result.verdict === "timeout") {
-			process.stderr.write(`\u001b[0;31mThis test took too long to complete!\u001b[0;0m\n`)
+			process.stderr.write(`\u001b[0;31m${indent(`This test took too long to complete!`)}\u001b[0;0m\n`)
 		}
 	}
 }
