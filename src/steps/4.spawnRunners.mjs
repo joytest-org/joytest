@@ -1,4 +1,4 @@
-import createTestRunner from "../../../create-runner/dist/package.mjs"
+import createTestRunner from "@anio-jtest/create-runner"
 
 export default async function(jtest_session) {
 	const n_runners = jtest_session.options.runners.length
