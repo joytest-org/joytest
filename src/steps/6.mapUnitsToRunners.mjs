@@ -40,7 +40,9 @@ export default async function(jtest_session) {
 		}
 
 		const runners = runner.runTestUnitsFactory(
-			jtest_session.internal_state.computed_units, eventHandler
+			jtest_session.internal_state.computed_units,
+			jtest_session.options.timeout,
+			eventHandler
 		)
 
 		ret.push(async () => {

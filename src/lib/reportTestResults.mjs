@@ -6,7 +6,7 @@ function determineFinalVerdict(test_results) {
 			return "error"
 		}
 
-		if (test_result.verdict === "fail") passed = false
+		if (test_result.verdict !== "pass") passed = false
 	}
 
 	return passed ? "pass" : "fail"
@@ -18,6 +18,7 @@ function condenseTestResultVerdicts(test_results) {
 	const pass = `\u001b[0;32m✔\u001b[0;0m`
 	const fail = `\u001b[0;31m✘\u001b[0;0m`
 	const error = `\u001b[1;33m⚠\u001b[0;0m`
+	const timeout = `\u001b[1;31m⏱\u001b[0;0m`
 
 	for (const test_result of test_results) {
 		if (test_result.has_error_occurred_during_testing) {
@@ -26,6 +27,8 @@ function condenseTestResultVerdicts(test_results) {
 			ret.push(pass)
 		} else if (test_result.verdict === "fail") {
 			ret.push(fail)
+		} else if (test_result.verdict === "timeout") {
+			ret.push(timeout)
 		}
 	}
 
@@ -60,6 +63,8 @@ export default function(jtest_session, test, test_results) {
 			process.stderr.write(`\u001b[0;33m${result.error}\u001b[0;0m\n`)
 		} else if (result.verdict === "fail") {
 			process.stderr.write(`\u001b[0;31m${result.error}\u001b[0;0m\n`)
+		} else if (result.verdict === "timeout") {
+			process.stderr.write(`\u001b[0;31mThis test took too long to complete!\u001b[0;0m\n`)
 		}
 	}
 }
