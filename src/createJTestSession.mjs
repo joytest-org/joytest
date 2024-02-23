@@ -6,8 +6,16 @@ import path from "node:path"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export default function(options) {
-	// use defaults for options here
+export default function(user_options) {
+	const default_options = {
+		isolate: 3,
+		parallel: 5,
+		timeout: 5000,
+		runners: ["node"],
+		collapsed: false
+	}
+
+	const options = Object.assign({}, default_options, user_options)
 
 	//
 	// reference path to this package

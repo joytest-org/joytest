@@ -46,17 +46,24 @@ export default async function(args) {
 
 	const project_root = await fs.realpath(input.operands[0])
 
-	return {
+	let user_options = {
 		project_root,
-
-		isolate: "isolate" in input.options ? input.options.isolate : 3,
-		parallel: "parallel" in input.options ? input.options.parallel : 1,
-		timeout: "timeout" in input.options ? input.options.timeout : 5000,
-
-		collapsed: input.flags.includes("collapsed"),
-
-		test_files: await expandAndValidateInputTestFiles(project_root, input.operands.slice(1)),
-
-		runners: "runner" in input.options ? input.options.runner : ["node"]
+		test_files: await expandAndValidateInputTestFiles(project_root, input.operands.slice(1))
 	}
+
+	//
+	// only set option prop on user_options
+	// if it is found in input.options
+	//
+	for (const option_name in options.options) {
+		if (option_name in input.options) {
+			user_options[option_name] = input.options[option_name]
+		}
+	}
+
+	for (const flag_name of options.flags) {
+		user_options[flag_name] = input.flags.includes(flag_name)
+	}
+
+	return user_options
 }
