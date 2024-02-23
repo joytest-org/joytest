@@ -16,6 +16,9 @@ const jtest_session = createJTestSession(
 	await parseCLIArgs(cli_args)
 )
 
+process.stderr.write(`Using ${jtest_session.options.parallel} parallel worker(s).\n`)
+process.stderr.write(`Timeout set to ${jtest_session.options.timeout}ms.\n`)
+
 let all_passing = true
 
 function progressBar(max, current) {
@@ -126,6 +129,12 @@ process.stderr.write(
 )
 
 process.stderr.write(`Done in ${millisToSeconds(result.execution_time)} second(s)\n`)
+
+if (result.successful) {
+	process.stderr.write(
+		`\u001b[1;32m✔ All tests successfully passed!\u001b[0;0m\n`
+	)
+}
 
 if (!result.successful) {
 	process.exit(1)
