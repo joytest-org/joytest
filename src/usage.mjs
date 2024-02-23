@@ -1,5 +1,4 @@
-export default `
-Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
+export default `Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
     Possible options and their meaning:
 
