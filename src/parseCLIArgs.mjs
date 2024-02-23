@@ -65,5 +65,15 @@ export default async function(args) {
 		user_options[flag_name] = input.flags.includes(flag_name)
 	}
 
+	//
+	// ugly but ok for the time being
+	// rename "runner" to "runners"
+	//
+	if ("runner" in user_options) {
+		user_options.runners = user_options.runner
+
+		delete user_options.runner
+	}
+
 	return user_options
 }
