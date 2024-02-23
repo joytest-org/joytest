@@ -64,6 +64,8 @@ jtest_session.on("report", ({id, value}) => {
 		// check for failing or erroring test results
 		//
 		for (const result of value.results) {
+			if (result === false) continue
+
 			if (result.has_error_occurred_during_testing) {
 				all_passing = false
 			} else if (result.verdict !== "pass") {
