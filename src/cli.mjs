@@ -28,9 +28,6 @@ function progressBar(max, current) {
 
 	let color = all_passing ? `96;40m` : `93;40m`
 
-	//
-	// each test could be represented as a dot (green pass / red fail)
-	//
 	return `[\u001b[${color}${"◼".repeat(on_chars)}\u001b[0;0m\u001b[30;40m${"#".repeat(off_chars)}\u001b[0;0m]`
 }
 
