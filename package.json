@@ -1,0 +1,23 @@
+{
+  "name": "anio-jtest",
+  "version": "0.0.1",
+  "description": "A small javascript test runner.",
+  "author": "Anio Software <info@anio.software>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anio-jtest/anio-jtest.git"
+  },
+  "exports": {
+    ".": "./src/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@anio-js-core-foundation/node-fs-scandir-sync": "^1.0.0",
+    "@anio-js-core-foundation/node-parse-cli-args": "^0.8.0",
+    "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
+    "@anio-js-core-foundation/fn-measure-execution-time": "^1.0.0",
+    "@anio-js-core-foundation/simple-event-emitter": "^0.3.0",
+    "@anio-js-foundation/create-worker": "^0.11.0"
+  }
+}
