@@ -12,6 +12,9 @@
     ".": "./src/index.mjs",
     "./package.json": "./package.json"
   },
+  "bin": {
+    "anio-jtest": "./src/cli.mjs"
+  },
   "dependencies": {
     "@anio-js-core-foundation/node-fs-scandir-sync": "^1.0.0",
     "@anio-js-core-foundation/node-parse-cli-args": "^0.8.0",
