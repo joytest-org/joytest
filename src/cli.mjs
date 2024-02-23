@@ -3,9 +3,17 @@ import createJTestSession from "./createJTestSession.mjs"
 import parseCLIArgs from "./parseCLIArgs.mjs"
 import clearCurrentLine from "./lib/clearCurrentLine.mjs"
 import reportTestResults from "./lib/reportTestResults.mjs"
+import usage from "./usage.mjs"
+
+const cli_args = process.argv.slice(2)
+
+if (!cli_args.length) {
+	process.stderr.write(usage)
+	process.exit(2)
+}
 
 const jtest_session = createJTestSession(
-	await parseCLIArgs(process.argv.slice(2))
+	await parseCLIArgs(cli_args)
 )
 
 let all_passing = true
