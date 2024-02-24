@@ -87,6 +87,36 @@ Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
 Some things are not implemented (yet) such as test randomization, info-fd, slow-test-threshold and `--isolate 2`.
 
+## Test File API
+
+```js
+//
+// these two lines are basic boilerplate for a unit test file.
+//
+import {createTestSuite} from "@anio-jtest/test"
+
+const {describe, test, suite} = createTestSuite(import.meta.url)
+
+describe("this is a describe block", () => {
+	test("this is a synchronous test", (expect) => {
+		expect(1).toBe(1)
+	})
+
+	test("this is a asynchronous test", async (expect) => {
+		expect.assertions(1)
+
+		await (new Promise(resolve => setTimeout(resolve, 100)))
+
+		expect(1).toBe(1)
+	})
+})
+
+//
+// test file must export a test suite
+//
+export default suite
+```
+
 ### Todo
 
 - Remove reliance on `anio_project.mjs` config file in project root.
