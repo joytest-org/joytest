@@ -120,6 +120,5 @@ export default suite
 
 ### Todo
 
-- Remove reliance on `anio_project.mjs` config file in project root.
 - Implement rest of the feature set.
 - Session Server (graphical web view), not a priority.
