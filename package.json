@@ -25,6 +25,6 @@
     "@anio-jtest/create-runner": "^0.1.0"
   },
   "devDependencies": {
-    "@anio-jtest/test": "^0.18.0"
+    "@anio-jtest/test": "^0.19.0"
   }
 }
