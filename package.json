@@ -1,7 +1,7 @@
 {
   "name": "anio-jtest",
   "version": "0.2.1",
-  "description": "A small javascript test runner.",
+  "description": "A small yet versatile javascript test runner.",
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
   "repository": {

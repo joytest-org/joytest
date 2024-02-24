@@ -1,6 +1,9 @@
 # anio-jtest
 
-A small javascript test runner.
+A small yet versatile javascript test runner.
+
+> [!WARNING]  
+> This project is far from production ready. API and behaviour might change without notice.
 
 ```
 Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
