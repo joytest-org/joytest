@@ -8,7 +8,6 @@ describe("expect.toHaveProperty", () => {
 		expect([1,2]).toHaveProperty("length")
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let i = 0;
 
@@ -18,7 +17,6 @@ describe("expect.toHaveProperty", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 describe("expect.not.toHaveProperty", () => {
@@ -28,7 +26,6 @@ describe("expect.not.toHaveProperty", () => {
 		expect([1,2]).not.toHaveProperty("length1")
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let i = 0;
 
@@ -38,7 +35,6 @@ describe("expect.not.toHaveProperty", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 export default suite

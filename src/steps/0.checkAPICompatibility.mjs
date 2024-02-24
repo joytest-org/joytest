@@ -21,9 +21,9 @@ export default async function(jtest_session) {
 		)
 	}
 
-	if (!project_anio_jtest_version.startsWith(`0.19.`)) {
+	if (!project_anio_jtest_version.startsWith(`0.20.`)) {
 		throw new Error(
-			`Unsupported version of @anio-jtest/test. Required: 0.19.x, Actual: ${project_anio_jtest_version}.`
+			`Unsupported version of @anio-jtest/test. Required: 0.20.x, Actual: ${project_anio_jtest_version}.`
 		)
 	}
 }

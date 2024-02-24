@@ -1,3 +1,3 @@
 #!/bin/bash -eufx
 
-./src/cli.mjs . tests/
+./src/cli.mjs . -test-mode-do-not-use -- tests/

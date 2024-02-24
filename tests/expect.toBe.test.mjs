@@ -11,7 +11,6 @@ describe("expect.toBe", () => {
 		expect(a).toBe(a)
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let a = {}, i = 0;
 
@@ -24,7 +23,6 @@ describe("expect.toBe", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 describe("expect.not.toBe", () => {
@@ -37,7 +35,6 @@ describe("expect.not.toBe", () => {
 		expect(a).not.toBe(b)
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let a = {}, i = 0;
 
@@ -50,7 +47,6 @@ describe("expect.not.toBe", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 export default suite

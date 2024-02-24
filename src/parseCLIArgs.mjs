@@ -30,7 +30,9 @@ export default async function(args) {
 			// Do not randomize order of test cases.
 			"no-randomize",
 			// Do not show extra information
-			"collapsed"
+			"collapsed",
+			// Only to be used for testing
+			"test-mode-do-not-use"
 		],
 
 		// --runner can be specified multiple times

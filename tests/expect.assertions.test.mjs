@@ -8,7 +8,6 @@ describe("expect.assertions", () => {
 		expect(1).toBe(1)
 	})
 
-	/*
 	test("should throw an error if assertions() is called more than once", (expect) => {
 		let errorThrown = false
 
@@ -24,7 +23,6 @@ describe("expect.assertions", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 export default suite

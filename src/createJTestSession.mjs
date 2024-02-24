@@ -22,6 +22,8 @@ export default function(user_options) {
 	const package_root = path.resolve(__dirname, "..")
 
 	let jtest_session = {
+		jtest_test_mode: options["test-mode-do-not-use"] === true,
+
 		package_root,
 
 		options,

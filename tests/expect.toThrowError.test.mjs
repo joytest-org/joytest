@@ -12,7 +12,6 @@ describe("expect.toThrowError", () => {
 		}).toThrowError("message")
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let i = 0;
 
@@ -30,7 +29,6 @@ describe("expect.toThrowError", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 export default suite

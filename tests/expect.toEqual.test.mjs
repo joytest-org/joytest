@@ -27,7 +27,6 @@ describe("expect.toEqual", () => {
 		})
 	})
 
-	/*
 	test("error cases", (expect) => {
 		let a = {}, i = 0;
 
@@ -58,7 +57,6 @@ describe("expect.toEqual", () => {
 			throw new Error
 		}
 	})
-	*/
 })
 
 export default suite
