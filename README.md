@@ -74,6 +74,7 @@ Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
         -no-randomize
             Do not randomize order of test cases.
+            This is only really relevant if "--parallel 1" was specified.
 
         -collapsed
             Do not display extra information.
