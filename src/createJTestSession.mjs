@@ -11,8 +11,7 @@ export default function(user_options) {
 		isolate: 3,
 		parallel: 5,
 		timeout: 5000,
-		runners: ["node"],
-		collapsed: false
+		runners: ["node"]
 	}
 
 	const options = Object.assign({}, default_options, user_options)
