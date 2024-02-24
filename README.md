@@ -1,4 +1,4 @@
-# anio-jtest
+# 🧪 anio-jtest
 
 A small yet versatile javascript test runner.
 
