@@ -14,16 +14,16 @@ export default async function(jtest_session) {
 	try {
 		const project_anio_jtest = require("@anio-jtest/test/package.json")
 
-		project_anio_jtest_version = project_anio_jtest.version
+		project_anio_jtest_version = `${project_anio_jtest.version}`
 	} catch (error) {
 		throw new Error(
 			`Could not read @anio-jtest/test/package.json from project root. Did you install @anio-jtest/test?`
 		)
 	}
 
-	if (project_anio_jtest_version !== "0.17.2") {
+	if (!project_anio_jtest_version.startsWith(`0.18.`)) {
 		throw new Error(
-			`Unsupported version of @anio-jtest/test. Required: 0.17.2, Actual: ${project_anio_jtest_version}.`
+			`Unsupported version of @anio-jtest/test. Required: 0.18.x, Actual: ${project_anio_jtest_version}.`
 		)
 	}
 }
