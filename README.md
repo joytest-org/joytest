@@ -102,7 +102,7 @@ describe("this is a describe block", () => {
 		expect(1).toBe(1)
 	})
 
-	test("this is a asynchronous test", async (expect) => {
+	test("this is an asynchronous test", async (expect) => {
 		expect.assertions(1)
 
 		await (new Promise(resolve => setTimeout(resolve, 100)))
