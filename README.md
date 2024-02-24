@@ -29,9 +29,9 @@ Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
             Example:
 
-                anio-jtest <project_root> \\
-                    --runner node \\
-                    --runner browser:8080 \\
+                anio-jtest <project_root> \
+                    --runner node \
+                    --runner browser:8080 \
                     --runner node:/home/runner/node/v20/bin/node
 
             The default is to spawn a single node process (equivalent to specifying "--runner node").
