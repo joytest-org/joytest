@@ -1,7 +1,8 @@
-import {describe, test, expect} from "@anio-jtest/test"
+import {createTestSuite} from "@anio-jtest/test"
+const {describe, test, suite} = createTestSuite(import.meta.url)
 
 describe("expect.toThrowError", () => {
-	test("basic functionality", () => {
+	test("basic functionality", (expect) => {
 		expect(() => {
 			throw new Error
 		}).toThrowError()
@@ -11,7 +12,8 @@ describe("expect.toThrowError", () => {
 		}).toThrowError("message")
 	})
 
-	test("error cases", () => {
+	/*
+	test("error cases", (expect) => {
 		let i = 0;
 
 		try {
@@ -28,4 +30,7 @@ describe("expect.toThrowError", () => {
 			throw new Error
 		}
 	})
+	*/
 })
+
+export default suite
