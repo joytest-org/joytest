@@ -17,7 +17,7 @@
     "joytest": "./dist/cli.mjs"
   },
   "scripts": {
-    "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs && cp src/cli.mjs dist/cli.mjs"
+    "prepare": "./prepare.sh"
   },
   "devDependencies": {
     "@anio-js-core-foundation/fn-measure-execution-time": "^1.0.0",

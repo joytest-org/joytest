@@ -20,6 +20,10 @@ const jtest_session = createJTestSession(
 	await parseCLIArgs(cli_args)
 )
 
+process.stderr.write(
+	`\u001b[1;33m🌞 Joytest v${internal.version}\u001b[0;0m\n`
+)
+
 process.stderr.write(`Using ${jtest_session.options.parallel} parallel worker(s).\n`)
 process.stderr.write(`Timeout set to ${jtest_session.options.timeout}ms.\n`)
 

@@ -5,6 +5,7 @@ export const createJTestSession = impl_createJTestSession
 export const expandAndValidateInputTestFiles = impl_expandAndValidateInputTestFiles
 
 export default {
+	version: `%%JOYTEST_RELEASE_VERSION%%`,
 	createJTestSession,
 	expandAndValidateInputTestFiles
 }
@@ -19,6 +20,7 @@ import internal_reportTestResults from "./lib/reportTestResults.mjs"
 import internal_usage from "./usage.mjs"
 
 export const internal = {
+	version: `%%JOYTEST_RELEASE_VERSION%%`,
 	createJTestSession: internal_createJTestSession,
 	parseCLIArgs: internal_parseCLIArgs,
 	clearCurrentLine: internal_clearCurrentLine,
