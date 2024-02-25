@@ -1,9 +1,4 @@
 import fs from "node:fs/promises"
-import {fileURLToPath} from "node:url"
-import path from "node:path"
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
 import parseCLIArgs from "@anio-js-core-foundation/node-parse-cli-args"
 import expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTestFiles.mjs"
 
@@ -42,11 +37,6 @@ export default async function(args) {
 	}
 
 	const input = await parseCLIArgs(args, options)
-
-	if (1 > input.operands.length) {
-		process.stderr.write(`Usage: joytest [...flags] [...options] <project_root> [...test files]\n`)
-		process.exit(2)
-	}
 
 	const project_root = await fs.realpath(input.operands[0])
 
