@@ -9,22 +9,26 @@
     "url": "git+https://github.com/anio-jtest/anio-jtest.git"
   },
   "exports": {
-    ".": "./src/index.mjs",
+    ".": "./dist/package.mjs",
+    "./suite": "./dist/suite.mjs",
     "./package.json": "./package.json"
   },
   "bin": {
-    "anio-jtest": "./src/cli.mjs"
+    "anio-jtest": "./dist/cli.mjs"
   },
-  "dependencies": {
+  "scripts": {
+    "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs && cp src/cli.mjs dist/cli.mjs"
+  },
+  "devDependencies": {
     "@anio-js-core-foundation/fn-measure-execution-time": "^1.0.0",
     "@anio-js-core-foundation/node-fs-scandir-sync": "^1.0.0",
     "@anio-js-core-foundation/node-parse-cli-args": "^0.8.0",
     "@anio-js-core-foundation/simple-event-emitter": "^0.3.0",
     "@anio-js-foundation/create-worker": "^0.12.1",
     "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
-    "@anio-jtest/create-runner": "^0.4.0"
-  },
-  "devDependencies": {
-    "@anio-jtest/test": "^0.20.1"
+    "@anio-jtest/create-runner": "^0.4.0",
+    "@anio-jtest/test": "^1.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.12.0"
   }
 }

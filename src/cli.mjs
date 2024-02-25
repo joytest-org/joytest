@@ -1,9 +1,13 @@
 #!/usr/bin/env node
-import createJTestSession from "./createJTestSession.mjs"
-import parseCLIArgs from "./parseCLIArgs.mjs"
-import clearCurrentLine from "./lib/clearCurrentLine.mjs"
-import reportTestResults from "./lib/reportTestResults.mjs"
-import usage from "./usage.mjs"
+import {internal} from "./package.mjs"
+
+const {
+	createJTestSession,
+	parseCLIArgs,
+	clearCurrentLine,
+	reportTestResults,
+	usage
+} = internal
 
 const cli_args = process.argv.slice(2)
 

@@ -1,4 +1,4 @@
-import {createTestSuite} from "@anio-jtest/test"
+import {createTestSuite} from "../src/suite/index.mjs"
 const {describe, test, suite} = createTestSuite(import.meta.url)
 
 describe("expect.toEqual", () => {
