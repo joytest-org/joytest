@@ -26,7 +26,7 @@
     "@anio-js-core-foundation/simple-event-emitter": "^0.3.0",
     "@anio-js-foundation/create-worker": "^0.12.1",
     "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
-    "@anio-jtest/create-runner": "^0.4.0",
+    "@anio-jtest/create-runner": "^0.5.0",
     "@anio-jtest/test": "^1.0.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup": "^4.12.0"
