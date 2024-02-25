@@ -36,7 +36,7 @@ export default function(user_options) {
 
 			// A "unit" refers to the test(s) executed by a single worker process
 			// In the standard running mode, one test case equals one unit.
-			// However, anio-jtest can be configured so each test file
+			// However, joytest can be configured so each test file
 			// is considered a unit. Hence, a unit can be more than a single unit test.
 			computed_units: [],
 

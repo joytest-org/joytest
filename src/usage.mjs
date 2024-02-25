@@ -1,9 +1,9 @@
-export default `Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
+export default `Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
 
     Possible options and their meaning:
 
         --runner <type>:<option>
-            Tells anio-jtest to spawn a runner of type 'type'.
+            Tells joytest to spawn a runner of type 'type'.
 
             Possible types:
 
@@ -21,7 +21,7 @@ export default `Usage: anio-jtest <project-root> [...options] [...flags] -- [...
 
             Example:
 
-                anio-jtest <project_root> \\
+                joytest <project_root> \\
                     --runner node \\
                     --runner browser:8080 \\
                     --runner node:/home/runner/node/v20/bin/node
@@ -52,7 +52,7 @@ export default `Usage: anio-jtest <project-root> [...options] [...flags] -- [...
 
         --info-fd <n>
             Print information (in JSON format) that can be used to automate
-            calls to anio-jtest on file descriptor with id <n>.
+            calls to joytest on file descriptor with id <n>.
 
         --slow-test-threshold <n>
             Specify amount after a test is being reported as "slow".

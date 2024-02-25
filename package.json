@@ -1,12 +1,12 @@
 {
-  "name": "anio-jtest",
+  "name": "joytest",
   "version": "0.5.1",
   "description": "A small yet versatile javascript test runner.",
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anio-jtest/anio-jtest.git"
+    "url": "git+https://github.com/joytest-org/joytest.git"
   },
   "exports": {
     ".": "./dist/package.mjs",
@@ -14,7 +14,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "anio-jtest": "./dist/cli.mjs"
+    "joytest": "./dist/cli.mjs"
   },
   "scripts": {
     "prepare": "./node_modules/.bin/rollup -c rollup.config.mjs && cp src/cli.mjs dist/cli.mjs"
@@ -26,8 +26,8 @@
     "@anio-js-core-foundation/simple-event-emitter": "^0.3.0",
     "@anio-js-foundation/create-worker": "^0.12.1",
     "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
-    "@anio-jtest/create-runner": "^0.5.0",
-    "@anio-jtest/test": "^1.0.0",
+    "@joytest/create-runner": "^0.6.0",
+    "@joytest/test-api": "^2.0.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup": "^4.12.0"
   },

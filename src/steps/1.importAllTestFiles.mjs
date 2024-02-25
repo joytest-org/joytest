@@ -17,7 +17,7 @@ export async function requestHandler(test_file) {
 			}
 		} else if (!("is_anio_jtest_test_suite" in module.default)) {
 			return {
-				error: \`Module doesn't export an anio-jtest test suite\`
+				error: \`Module doesn't export an joytest test suite\`
 			}
 		}
 

@@ -1,4 +1,4 @@
-# 🧪 anio-jtest
+# 🌞 joytest
 
 A small yet versatile javascript test runner.
 
@@ -6,12 +6,12 @@ A small yet versatile javascript test runner.
 > This project is far from production ready. API and behaviour might change without notice.
 
 ```
-Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
+Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
 
     Possible options and their meaning:
 
         --runner <type>:<option>
-            Tells anio-jtest to spawn a runner of type 'type'.
+            Tells joytest to spawn a runner of type 'type'.
 
             Possible types:
 
@@ -29,7 +29,7 @@ Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
             Example:
 
-                anio-jtest <project_root> \
+                joytest <project_root> \
                     --runner node \
                     --runner browser:8080 \
                     --runner node:/home/runner/node/v20/bin/node
@@ -60,7 +60,7 @@ Usage: anio-jtest <project-root> [...options] [...flags] -- [...test_files]
 
         --info-fd <n>
             Print information (in JSON format) that can be used to automate
-            calls to anio-jtest on file descriptor with id <n>.
+            calls to joytest on file descriptor with id <n>.
 
         --slow-test-threshold <n>
             Specify amount after a test is being reported as "slow".
@@ -98,7 +98,7 @@ Some things are not implemented (yet) such as test randomization, info-fd, slow-
 //
 // these two lines are basic boilerplate for a unit test file.
 //
-import {createTestSuite} from "anio-jtest/suite"
+import {createTestSuite} from "joytest/suite"
 
 const {describe, test, suite} = createTestSuite(import.meta.url)
 

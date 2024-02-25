@@ -10,7 +10,7 @@ import expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTestFil
 export default async function(args) {
 	const options = {
 		options: {
-			// Tells anio-jtest to spawn a runner of type 'type'.
+			// Tells joytest to spawn a runner of type 'type'.
 			"runner": "string",
 			// Specify level of isolation ; a higher value means better test isolation.
 			"isolate": "integer",
@@ -44,7 +44,7 @@ export default async function(args) {
 	const input = await parseCLIArgs(args, options)
 
 	if (1 > input.operands.length) {
-		process.stderr.write(`Usage: anio-jtest [...flags] [...options] <project_root> [...test files]\n`)
+		process.stderr.write(`Usage: joytest [...flags] [...options] <project_root> [...test files]\n`)
 		process.exit(2)
 	}
 
