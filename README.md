@@ -1,6 +1,6 @@
 <img src="./logo.png" height="50px">
 
-# 🌞 joytest
+---
 
 A small yet versatile javascript test runner.
 
