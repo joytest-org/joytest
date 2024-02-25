@@ -1,4 +1,4 @@
-import {createTestSuite} from "../src/suite/index.mjs"
+import {createTestSuite} from "../dist/suite.mjs"
 const {describe, test, suite} = createTestSuite(import.meta.url)
 
 describe("expect.toEqual", () => {

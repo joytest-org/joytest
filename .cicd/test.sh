@@ -1,3 +1,4 @@
 #!/bin/bash -eufx
 
-./src/cli.mjs . -test-mode-do-not-use -- tests/
+npm run prepare
+./dist/cli.mjs . -test-mode-do-not-use -- tests/
