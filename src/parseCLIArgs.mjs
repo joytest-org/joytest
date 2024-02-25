@@ -1,6 +1,19 @@
 import fs from "node:fs/promises"
+import path from "node:path"
 import parseCLIArgs from "@anio-js-core-foundation/node-parse-cli-args"
 import expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTestFiles.mjs"
+
+async function __tests__FolderExists(project_root) {
+	try {
+		const stat = await fs.lstat(
+			path.join(project_root, "__tests__")
+		)
+
+		return stat.isDirectory()
+	} catch (error) {
+		return false
+	}
+}
 
 export default async function(args) {
 	const options = {
@@ -41,9 +54,18 @@ export default async function(args) {
 	const project_root = await fs.realpath(input.operands[0])
 
 	let user_options = {
-		project_root,
-		test_files: await expandAndValidateInputTestFiles(project_root, input.operands.slice(1))
+		project_root
 	}
+
+	let test_files = []
+
+	if (input.operands.length > 1) {
+		test_files = await expandAndValidateInputTestFiles(project_root, input.operands.slice(1))
+	} else if (await __tests__FolderExists(project_root)) {
+		test_files = await expandAndValidateInputTestFiles(project_root, ["__tests__"])
+	}
+
+	user_options.test_files = test_files
 
 	//
 	// only set option prop on user_options
