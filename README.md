@@ -92,7 +92,7 @@ Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
         Specifying the same test file twice will not result in the test file being added a second time.
 ```
 
-Some things are not implemented (yet) such as test randomization, info-fd, slow-test-threshold and `--isolate 2`.
+Some things are not implemented (yet) such as info-fd, slow-test-threshold and `--isolate 2`.
 
 ## Test File API
 
