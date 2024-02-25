@@ -1,4 +1,4 @@
-![Logo](logo.png)
+<img src="./logo.png" height="50px">
 
 # 🌞 joytest
 
