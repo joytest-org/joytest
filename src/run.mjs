@@ -13,7 +13,9 @@ export default async function(jtest_session) {
 	)
 
 	const {
-		number_of_tests, number_of_tests_passed
+		number_of_tests,
+		number_of_tests_passed,
+		number_of_tests_skipped
 	} = jtest_session.internal_state.final_statistics
 
 	return {
@@ -21,6 +23,6 @@ export default async function(jtest_session) {
 		statistics: {
 			...jtest_session.internal_state.final_statistics
 		},
-		successful: number_of_tests === number_of_tests_passed
+		successful: number_of_tests === (number_of_tests_passed + number_of_tests_skipped)
 	}
 }

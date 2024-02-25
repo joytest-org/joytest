@@ -1,13 +1,17 @@
 function determineFinalVerdict(test_results) {
-	let passed = true
+	let passed = true, skipped = false
 
 	for (const test_result of test_results) {
 		if (test_result.has_error_occurred_during_testing) {
 			return "error"
 		}
 
+		if (test_result.verdict === "skipped") skipped = true
+
 		if (test_result.verdict !== "pass") passed = false
 	}
+
+	if (skipped) return "skipped"
 
 	return passed ? "pass" : "fail"
 }
@@ -19,6 +23,7 @@ function condenseTestResultVerdicts(test_results) {
 	const fail = `\u001b[0;31m✘\u001b[0;0m`
 	const error = `\u001b[1;33m⚠\u001b[0;0m`
 	const timeout = `\u001b[1;31m⏱\u001b[0;0m`
+	const skipped = `\u001b[1;34m⏵\u001b[0;0m`
 
 	for (const test_result of test_results) {
 		if (test_result.has_error_occurred_during_testing) {
@@ -29,6 +34,8 @@ function condenseTestResultVerdicts(test_results) {
 			ret.push(fail)
 		} else if (test_result.verdict === "timeout") {
 			ret.push(timeout)
+		} else if (test_result.verdict === "skipped") {
+			ret.push(skipped)
 		}
 	}
 

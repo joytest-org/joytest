@@ -116,6 +116,10 @@ describe("this is a describe block", () => {
 
 		expect(1).toBe(1)
 	})
+
+	test.skip("this test will be skipped", (expect) => {
+		expect(1).not.toBe(1)
+	})
 })
 
 //

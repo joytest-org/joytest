@@ -3,6 +3,7 @@ export default function(jtest_session) {
 	let number_of_tests_passed = 0
 	let number_of_tests_failed = 0
 	let number_of_tests_error = 0
+	let number_of_tests_skipped = 0
 
 	for (const [test_id, runner_test_results] of jtest_session.internal_state.test_results) {
 
@@ -16,6 +17,8 @@ export default function(jtest_session) {
 				number_of_tests_error++
 			} else if (test_result.verdict === "pass") {
 				number_of_tests_passed++
+			} else if (test_result.verdict === "skipped") {
+				number_of_tests_skipped++
 			} else {
 				number_of_tests_failed++
 			}
@@ -27,7 +30,8 @@ export default function(jtest_session) {
 		number_of_tests,
 		number_of_tests_passed,
 		number_of_tests_failed,
-		number_of_tests_error
+		number_of_tests_error,
+		number_of_tests_skipped
 	}
 
 	jtest_session.internal_state.final_statistics = statistics

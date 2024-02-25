@@ -127,9 +127,16 @@ function highlightError(value) {
 	return `\u001b[1;33m${value}\u001b[0;0m`
 }
 
+function highlightSkipped(value) {
+	if (value === 0) return `${value}`
+
+	return `\u001b[1;34m${value}\u001b[0;0m`
+}
+
 process.stderr.write(
 	`Ran ${result.statistics.number_of_tests} unit test(s): ` +
 	`${result.statistics.number_of_tests_passed} passed` +
+	`, ${highlightSkipped(result.statistics.number_of_tests_skipped)} skipped` +
 	`, ${highlightFailed(result.statistics.number_of_tests_failed)} failed` +
 	`, ${highlightError(result.statistics.number_of_tests_error)} had errors.\n`
 )
