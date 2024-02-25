@@ -136,12 +136,22 @@ process.stderr.write(
 
 process.stderr.write(`Done in ${millisToSeconds(result.execution_time)} second(s)\n`)
 
-if (result.successful) {
+let had_error = true
+
+if (result.statistics.number_of_tests === 0) {
 	process.stderr.write(
-		`\u001b[1;32m✔ All tests successfully passed!\u001b[0;0m\n`
+		`\u001b[1;33m⚠️  No unit tests specified!\u001b[0;0m\n`
 	)
+} else {
+	if (result.successful) {
+		had_error = false
+
+		process.stderr.write(
+			`\u001b[1;32m✔ All tests successfully passed!\u001b[0;0m\n`
+		)
+	}
 }
 
-if (!result.successful) {
+if (had_error) {
 	process.exit(1)
 }
