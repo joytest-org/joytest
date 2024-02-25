@@ -1,11 +1,6 @@
 import eventEmitter from "@anio-js-core-foundation/simple-event-emitter"
 import {default as runJTestSession} from "./run.mjs"
 
-import {fileURLToPath} from "node:url"
-import path from "node:path"
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
 export default function(user_options) {
 	const default_options = {
 		isolate: 3,
@@ -16,15 +11,8 @@ export default function(user_options) {
 
 	const options = Object.assign({}, default_options, user_options)
 
-	//
-	// reference path to this package
-	//
-	const package_root = path.resolve(__dirname, "..")
-
 	let jtest_session = {
 		jtest_test_mode: options["test-mode-do-not-use"] === true,
-
-		package_root,
 
 		options,
 
