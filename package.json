@@ -34,6 +34,7 @@
   "files": [
     "./dist/package.mjs",
     "./dist/suite.mjs",
-    "./dist/cli.mjs"
+    "./dist/cli.mjs",
+    "./LICENSE"
   ]
 }
