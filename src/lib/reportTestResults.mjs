@@ -57,6 +57,12 @@ export default function(jtest_session, test, test_results) {
 		process.stderr.write(`\u001b[1;31m`)
 	}
 
+	if (test.describe_block !== null) {
+		const {label} = test.describe_block
+
+		process.stderr.write(` \u001b[1;39m${label} ›\u001b[0;0m`)
+	}
+
 	process.stderr.write(` ${test.label}`)
 
 	if (final_verdict === "pass" || final_verdict === "fail") {

@@ -28,7 +28,7 @@
     "@anio-js-foundation/create-worker": "^0.12.1",
     "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
     "@joytest/create-runner": "^0.7.0",
-    "@joytest/test-api": "^2.0.1",
+    "@joytest/test-api": "^2.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup": "^4.12.0"
   },
