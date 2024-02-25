@@ -1,3 +1,5 @@
+![Logo](logo.png)
+
 # 🌞 joytest
 
 A small yet versatile javascript test runner.
