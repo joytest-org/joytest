@@ -138,7 +138,7 @@ process.stderr.write(`Done in ${millisToSeconds(result.execution_time)} second(s
 
 let had_error = true
 
-if (result.statistics.number_of_tests === 0) {
+if (result.statistics.number_of_tests === 0 && !jtest_session.options["allow-zero-tests"]) {
 	process.stderr.write(
 		`\u001b[1;33m⚠️  No unit tests specified!\u001b[0;0m\n`
 	)

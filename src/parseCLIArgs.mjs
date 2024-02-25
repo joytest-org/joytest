@@ -31,6 +31,8 @@ export default async function(args) {
 			"no-randomize",
 			// Do not show extra information
 			"collapsed",
+			// Allow zero unit tests
+			"allow-zero-tests",
 			// Only to be used for testing
 			"test-mode-do-not-use"
 		],

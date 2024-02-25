@@ -64,6 +64,10 @@ export default `Usage: anio-jtest <project-root> [...options] [...flags] -- [...
 
     Possible flags and their meaning:
 
+        -allow-zero-tests
+            Allow zero unit tests.
+            Normally this would be considered an error.
+
         -no-randomize
             Do not randomize order of test cases.
             This is only really relevant if "--parallel 1" was specified.
