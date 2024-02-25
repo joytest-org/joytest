@@ -94,7 +94,7 @@ Some things are not implemented (yet) such as test randomization, info-fd, slow-
 //
 // these two lines are basic boilerplate for a unit test file.
 //
-import {createTestSuite} from "@anio-jtest/test"
+import {createTestSuite} from "anio-jtest/suite"
 
 const {describe, test, suite} = createTestSuite(import.meta.url)
 
