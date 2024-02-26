@@ -51,4 +51,9 @@ export default async function(jtest_session) {
 	}
 
 	await Promise.all(ret.map(r => r()))
+
+	//
+	// wait for last report event to be dispatched
+	//
+	await jtest_session.internal_state.last_event_dispatched.promise
 }
