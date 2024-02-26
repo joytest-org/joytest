@@ -20,7 +20,19 @@ export default function(runner_config) {
 	switch (type) {
 		case "node": {
 			if (option.length) {
-				options_obj["node_binary"] = option
+				//
+				// if option starts with /
+				// assume option to be path to binary
+				//
+				if (option.startsWith("/")) {
+					options_obj["node_binary"] = option
+				}
+				//
+				// otherwise assume it is a tj/n version specifier
+				//
+				else {
+					options_obj["version"] = option
+				}
 			}
 		} break
 

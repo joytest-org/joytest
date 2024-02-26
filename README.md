@@ -17,10 +17,14 @@ Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
 
             Possible types:
 
-                node:<path>
+                node:<option>
                     Spawn a node process to run test files on.
-                    The path to the node binary can be specified as the option.
-                    Default is "node".
+
+                    If <option> starts with a slash (/) this sets the
+                    path to the node binary to be used by the runner.
+
+                    If <option> does not start with a slash, this value
+                    is interpreted as a node version specifier.
 
                 browser:<http-port>
                     Spawn a HTTP server to run test files on.
@@ -34,7 +38,9 @@ Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
                 joytest <project_root> \
                     --runner node \
                     --runner browser:8080 \
-                    --runner node:/home/runner/node/v20/bin/node
+                    --runner node:/home/runner/node/v20/bin/node \
+                    --runner node:latest \
+                    --runner node:v19
 
             The default is to spawn a single node process (equivalent to specifying "--runner node").
 
