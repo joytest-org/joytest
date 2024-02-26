@@ -1,4 +1,5 @@
 import createTestRunner from "@joytest/create-runner"
+import parseRunnerOptions from "../lib/parseRunnerOptions.mjs"
 
 export default async function(jtest_session) {
 	const n_runners = jtest_session.options.runners.length
@@ -8,23 +9,9 @@ export default async function(jtest_session) {
 	let runners = []
 
 	for (const runner_config of jtest_session.options.runners) {
-		let runner_type = runner_config
-		let runner_options = {}
+		const {type, options} = parseRunnerOptions(runner_config)
 
-		if (runner_config.includes(":")) {
-			// todo: fix ":" in tmp[1]
-			let tmp = runner_config.split(":")
-
-			runner_type = tmp[0]
-
-			if (runner_type === "node") {
-				runner_options = {node_binary: tmp[1]}
-			} else if (runner_type === "browser") {
-				runner_options = {http_port: parseInt(tmp[1], 10)}
-			}
-		}
-
-		const runner_instance = await createTestRunner(runner_type, runner_options)
+		const runner_instance = await createTestRunner(type, options)
 
 		await runner_instance.init(jtest_session)
 
