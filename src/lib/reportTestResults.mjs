@@ -60,6 +60,7 @@ export default function(jtest_session, test, test_results) {
 	if (test.describe_block !== null) {
 		const {label} = test.describe_block
 
+		// todo: fix color reset bug
 		process.stderr.write(` \u001b[1;39m${label} ›\u001b[0;0m`)
 	}
 
