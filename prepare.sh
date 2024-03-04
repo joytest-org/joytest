@@ -1,7 +1,9 @@
 #!/bin/bash -eufx
 
-./node_modules/.bin/rollup -c rollup.config.mjs
+./node_modules/.bin/npm-package-bundler .
 
 cp src/cli.mjs dist/cli.mjs
 
-node replaceVersionNumber.mjs
+mv dist/suite/index.mjs dist/suite.mjs
+
+rm -r dist/suite

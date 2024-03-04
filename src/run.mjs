@@ -1,5 +1,5 @@
 import steps from "./steps/index.mjs"
-import fnMeasureExecutionTime from "@anio-js-core-foundation/fn-measure-execution-time"
+import fnMeasureExecutionTime from "@anio-js-foundation/fn-measure-execution-time"
 
 async function runAllSteps(jtest_session) {
 	for (const step of steps) {

@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
 import path from "node:path"
-import parseCLIArgs from "@anio-js-core-foundation/node-parse-cli-args"
+import parseCLIArgs from "@anio-node-foundation/cli-parse-args"
 import expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTestFiles.mjs"
 
 async function __tests__FolderExists(project_root) {

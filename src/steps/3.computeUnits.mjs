@@ -11,7 +11,7 @@
     0 - run everything without isolation (not recommended, fastest)
         Runs everything in a single worker.
 */
-import shuffleArrayInPlace from "@anio-js-core-foundation/shuffle-array-in-place"
+import shuffleArrayInPlace from "@anio-js-foundation/shuffle-array-in-place"
 
 function processTests(jtest_session, fn) {
 	for (const test_suite of jtest_session.internal_state.input.test_suites) {

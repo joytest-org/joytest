@@ -1,6 +1,6 @@
 import fs from "node:fs/promises"
 import path from "node:path"
-import scandirSync from "@anio-js-core-foundation/node-fs-scandir-sync"
+import scandir from "@anio-node-foundation/fs-scandir"
 
 export default async function(project_root, entries) {
 	let ret = []
@@ -17,7 +17,9 @@ export default async function(project_root, entries) {
 		const stat = await fs.lstat(absolute_path)
 
 		if (stat.isDirectory()) {
-			for (const _ of scandirSync(absolute_path)) {
+			const dir_entries = await scandir(absolute_path)
+
+			for (const _ of dir_entries) {
 				if (_.type !== "file") continue
 				if (!_.relative_path.endsWith(".test.mjs")) continue
 

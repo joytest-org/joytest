@@ -20,18 +20,17 @@
     "prepare": "./prepare.sh"
   },
   "devDependencies": {
-    "@anio-js-core-foundation/create-promise": "^1.0.1",
-    "@anio-js-core-foundation/fn-measure-execution-time": "^1.0.0",
-    "@anio-js-core-foundation/node-fs-scandir-sync": "^1.0.0",
-    "@anio-js-core-foundation/node-parse-cli-args": "^0.8.0",
-    "@anio-js-core-foundation/shuffle-array-in-place": "^1.0.0",
-    "@anio-js-core-foundation/simple-event-emitter": "^0.4.0",
-    "@anio-js-foundation/create-worker": "^0.12.1",
-    "@anio-js-foundation/run-promises-in-parallel": "^0.3.2",
-    "@joytest/create-runner": "^0.7.0",
-    "@joytest/test-api": "^2.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.12.0"
+    "@anio-js-foundation/create-promise": "^2.0.0",
+    "@anio-js-foundation/create-worker": "^1.0.0",
+    "@anio-js-foundation/fn-measure-execution-time": "^2.0.0",
+    "@anio-js-foundation/run-promises-in-parallel": "^1.0.0",
+    "@anio-js-foundation/shuffle-array-in-place": "^2.0.0",
+    "@anio-js-foundation/simple-event-emitter": "^1.0.0",
+    "@anio-node-foundation/cli-parse-args": "^2.0.0",
+    "@anio-node-foundation/fs-scandir": "^2.0.1",
+    "@anio-software/npm-package-bundler": "^1.0.0",
+    "@joytest/create-runner": "^0.9.0",
+    "@joytest/test-api": "^3.0.1"
   },
   "files": [
     "./dist/package.mjs",
