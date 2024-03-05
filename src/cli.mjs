@@ -97,13 +97,15 @@ jtest_session.on("pre-runner-spawn", (n_runners) => {
 })
 
 jtest_session.on("runner:spawned", ({index, runner}) => {
+	const dynamic_props = runner.getDynamicProperties()
+
 	if (runner.type === "browser") {
-		process.stderr.write(`[runner-${index}] Please open http://localhost:${runner.port}/index.html\n`)
+		process.stderr.write(`[runner-${index}] Please open http://localhost:${dynamic_props.port}/index.html\n`)
 	} else if (runner.type === "node") {
-		if ("node_binary" in runner) {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically (using binary '${runner.node_binary}')\n`)
+		if ("node_binary" in dynamic_props) {
+			process.stderr.write(`[runner-${index}] Node runner will connect automatically (using binary '${dynamic_props.node_binary}')\n`)
 		} else {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically once the node binary is ready (using node version '${runner.version}')\n`)
+			process.stderr.write(`[runner-${index}] Node runner will connect automatically once the node binary is ready (using node version '${dynamic_props.version}')\n`)
 		}
 	}
 })
