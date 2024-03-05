@@ -112,6 +112,10 @@ jtest_session.on("post-runner-spawn", () => {
 	process.stderr.write(`Waiting for runner(s) to connect ...\n`)
 })
 
+jtest_session.on("runner:ready", ({index, runner}) => {
+	process.stderr.write(`[runner-${index}] Connected to the test session!\n`)
+})
+
 jtest_session.on("ready", () => {
 	process.stderr.write(`All runners connected!\n`)
 })

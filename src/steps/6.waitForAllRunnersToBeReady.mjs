@@ -1,9 +1,12 @@
 export default async function(jtest_session) {
-	let ready_promises = jtest_session.internal_state.runners.map(instance => {
-		return instance.ready()
-	})
+	for (const [index, runner] of jtest_session.internal_state.runners.entries()) {
+		runner.ready()
+		.then(additional_information => {
+			jtest_session.dispatchEvent("runner:ready", {index, runner})
+		})
+	}
 
-	await Promise.all(ready_promises)
+	await jtest_session.internal_state.all_runners_ready.promise
 
 	jtest_session.dispatchEvent("ready")
 }

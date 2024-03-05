@@ -37,6 +37,7 @@ export default function(user_options) {
 
 			final_statistics: {},
 
+			all_runners_ready: createPromise(),
 			last_event_dispatched: createPromise()
 		},
 
@@ -57,6 +58,8 @@ export default function(user_options) {
 		"runner:spawned",
 		// emitted when all runners spawned
 		"post-runner-spawn",
+		// emitted when runner is ready
+		"runner:ready",
 		// when all runners are ready
 		"ready"
 	])
@@ -64,9 +67,28 @@ export default function(user_options) {
 	//
 	// hook into dispached events
 	//
+	let number_of_runners_spawned = 0
+	let number_of_runners_ready = 0
 	let number_of_tests_to_run = -1
 
 	event_emitter.setOnEventDispatchedHandler((event_name, event_data) => {
+		if (event_name === "runner:spawned") {
+			++number_of_runners_spawned
+			return
+		}
+
+		if (event_name === "runner:ready") {
+			++number_of_runners_ready
+
+			if (number_of_runners_spawned === number_of_runners_ready) {
+				setTimeout(() => {
+					jtest_session.internal_state.all_runners_ready.resolve()
+				}, 0)
+			}
+
+			return
+		}
+
 		if (event_name !== "report") return
 
 		const {id, value} = event_data[0]
