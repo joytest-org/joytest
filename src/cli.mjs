@@ -12,6 +12,10 @@ const {
 const cli_args = process.argv.slice(2)
 
 if (!cli_args.length) {
+	process.stderr.write(
+		`You are using joytest v${internal.version}.\n\n`
+	)
+
 	process.stderr.write(usage)
 	process.exit(2)
 }
