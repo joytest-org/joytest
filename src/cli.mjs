@@ -103,9 +103,9 @@ jtest_session.on("runner:spawned", ({index, runner}) => {
 		process.stderr.write(`[runner-${index}] Please open http://localhost:${dynamic_props.port}/index.html\n`)
 	} else if (runner.type === "node") {
 		if ("node_binary" in dynamic_props) {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically (using binary '${dynamic_props.node_binary}')\n`)
+			process.stderr.write(`[runner-${index}] Node runner will connect automatically (using binary at '${dynamic_props.node_binary}')\n`)
 		} else {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically once the node binary is ready (using node version '${dynamic_props.version}')\n`)
+			process.stderr.write(`[runner-${index}] Node runner will connect automatically once the node binary is ready (requested node version '${dynamic_props.requested_version}')\n`)
 		}
 	}
 })
@@ -115,7 +115,15 @@ jtest_session.on("post-runner-spawn", () => {
 })
 
 jtest_session.on("runner:ready", ({index, runner}) => {
-	process.stderr.write(`[runner-${index}] Connected to the test session!\n`)
+	const dynamic_props = runner.getDynamicProperties()
+
+	process.stderr.write(`[runner-${index}] Connected to the test session!`)
+
+	if ("concrete_version" in dynamic_props) {
+		process.stderr.write(` Using concrete version '${dynamic_props.concrete_version}'`)
+	}
+
+	process.stderr.write("\n")
 })
 
 jtest_session.on("ready", () => {
