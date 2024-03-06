@@ -1,12 +1,13 @@
 import eventEmitter from "@anio-js-foundation/simple-event-emitter"
 import createPromise from "@anio-js-foundation/create-promise"
+import os from "node:os"
 
 import {default as runJTestSession} from "./run.mjs"
 
 export default function(user_options) {
 	const default_options = {
 		isolate: 3,
-		parallel: 5,
+		parallel: os.availableParallelism(),
 		timeout: 5000,
 		runners: ["node"]
 	}

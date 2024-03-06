@@ -54,7 +54,7 @@ export default `Usage: joytest <project-root> [...options] [...flags] -- [...tes
         --parallel <n>
             Specify how many workers are spawned to run unit tests.
             This option has no effect if --isolate is 0.
-            The default value is 5.
+            The default value is whatever "os.availableParallelism()" returns.
 
         --info-fd <n>
             Print information (in JSON format) that can be used to automate
