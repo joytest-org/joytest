@@ -80,7 +80,7 @@ jtest_session.on("report", ({id, value}) => {
 
 			if (result.has_error_occurred_during_testing) {
 				all_passing = false
-			} else if (result.verdict !== "pass") {
+			} else if (result.verdict !== "pass" && result.verdict !== "skipped") {
 				all_passing = false
 			}
 		}
