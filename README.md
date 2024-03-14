@@ -91,6 +91,9 @@ Usage: joytest <project-root> [...options] [...flags] -- [...test_files]
         -collapsed
             Do not display extra information.
 
+        -ci
+            Set this flag if you're invoking joytest from a ci script.
+
     Handling of test_files:
 
         If a file is specified it will be added to the session, regardless of the file extension.
