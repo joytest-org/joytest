@@ -31,8 +31,8 @@ print.stderr(
 	c.bold.yellow(`🌞 Joytest v${internal.version}\n`)
 )
 
-print.stderr(`Using ${jtest_session.options.parallel} parallel worker(s).\n`)
-print.stderr(`Timeout set to ${jtest_session.options.timeout}ms.\n`)
+print.stderr(c.gray(`Using ${jtest_session.options.parallel} parallel worker(s).\n`))
+print.stderr(c.gray(`Timeout set to ${jtest_session.options.timeout}ms.\n`))
 
 let all_passing = true
 
@@ -102,7 +102,7 @@ jtest_session.on("report", ({id, value}) => {
 })
 
 jtest_session.on("pre-runner-spawn", (n_runners) => {
-	print.stderr(`Spawning ${n_runners} runners.\n`)
+	print.stderr(c.gray(`Spawning ${n_runners} runners.\n`))
 })
 
 jtest_session.on("runner:spawned", ({index, runner}) => {
