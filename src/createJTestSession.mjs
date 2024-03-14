@@ -56,6 +56,8 @@ export default function(user_options) {
 		// number of units, number of unit tests etc.
 		"report",
 		"pre-runner-spawn",
+		// emitted when runner sends a message
+		"runner:reportString",
 		// emitted when a runner was spawned
 		"runner:spawned",
 		// emitted when all runners spawned

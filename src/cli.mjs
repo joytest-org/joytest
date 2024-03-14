@@ -123,6 +123,10 @@ jtest_session.on("post-runner-spawn", () => {
 	print.stderr(`Waiting for runner(s) to connect ...\n`)
 })
 
+jtest_session.on("runner:reportString", ({index, string}) => {
+	print.stderr(c.gray(`[runner-${index}] ${string}\n`))
+})
+
 jtest_session.on("runner:ready", ({index, runner}) => {
 	const dynamic_props = runner.getDynamicProperties()
 

@@ -12,7 +12,11 @@ export default async function(jtest_session) {
 		const index = runners.length
 		const {type, options} = parseRunnerOptions(runner_config)
 
-		const runner_instance = await createTestRunner(type, options)
+		const reportString = (string) => {
+			jtest_session.dispatchEvent("runner:reportString", {index, string})
+		}
+
+		const runner_instance = await createTestRunner(type, options, reportString)
 
 		await runner_instance.init(jtest_session)
 
