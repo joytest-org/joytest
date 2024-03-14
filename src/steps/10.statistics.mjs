@@ -31,7 +31,8 @@ export default function(jtest_session) {
 		number_of_tests_passed,
 		number_of_tests_failed,
 		number_of_tests_error,
-		number_of_tests_skipped
+		number_of_tests_skipped,
+		number_of_assertions_made: jtest_session.internal_state.made_assertions
 	}
 
 	jtest_session.internal_state.final_statistics = statistics

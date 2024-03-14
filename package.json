@@ -31,7 +31,7 @@
     "@anio-node-foundation/fs-scandir": "^2.0.1",
     "@anio-software/npm-package-bundler": "^1.0.0",
     "@joytest/create-runner": "^0.11.0",
-    "@joytest/test-api": "^3.0.3"
+    "@joytest/test-api": "^3.1.0"
   },
   "files": [
     "./dist/package.mjs",

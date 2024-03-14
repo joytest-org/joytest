@@ -22,6 +22,7 @@ export default function(user_options) {
 		internal_state: {
 			number_of_tests_to_run: 0,
 			number_of_tests_ran: 0,
+			made_assertions: 0,
 
 			input: null,
 

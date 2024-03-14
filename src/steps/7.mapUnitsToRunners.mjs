@@ -26,6 +26,10 @@ export default async function(jtest_session) {
 
 			const {test_id, result} = data
 
+			if ("made_assertions" in result) {
+				jtest_session.internal_state.made_assertions += result.made_assertions
+			}
+
 			//
 			// save test result and associate it with the runner
 			//

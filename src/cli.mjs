@@ -172,7 +172,10 @@ print.stderr(
 	`, ${highlightError(result.statistics.number_of_tests_error)} had errors.\n`
 )
 
-print.stderr(`Done in ${millisToSeconds(result.execution_time)} second(s)\n`)
+print.stderr(
+	`Done in ${millisToSeconds(result.execution_time)} second(s)` +
+	`, made ${result.statistics.number_of_assertions_made} assertion(s)\n`
+)
 
 let had_error = true
 
