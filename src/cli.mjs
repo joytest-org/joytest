@@ -2,7 +2,7 @@
 import {internal} from "./package.mjs"
 
 const {
-	c, print,
+	c, print, forceColors,
 	createJTestSession,
 	parseCLIArgs,
 	clearCurrentLine,
@@ -22,6 +22,10 @@ if (!cli_args.length) {
 const jtest_session = createJTestSession(
 	await parseCLIArgs(cli_args)
 )
+
+if (jtest_session.options.ci) {
+	forceColors()
+}
 
 print.stderr(
 	c.bold.yellow(`🌞 Joytest v${internal.version}\n`)

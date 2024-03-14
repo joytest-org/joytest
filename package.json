@@ -26,7 +26,7 @@
     "@anio-js-foundation/run-promises-in-parallel": "^1.0.0",
     "@anio-js-foundation/shuffle-array-in-place": "^2.0.0",
     "@anio-js-foundation/simple-event-emitter": "^1.0.0",
-    "@anio-js-foundation/str-colorize": "^2.0.0",
+    "@anio-js-foundation/str-colorize": "^2.1.0",
     "@anio-node-foundation/cli-parse-args": "^2.0.0",
     "@anio-node-foundation/fs-scandir": "^2.0.1",
     "@anio-software/npm-package-bundler": "^1.0.0",
