@@ -9,6 +9,7 @@ export default async function(jtest_session) {
 	let runners = []
 
 	for (const runner_config of jtest_session.options.runners) {
+		const index = runners.length
 		const {type, options} = parseRunnerOptions(runner_config)
 
 		const runner_instance = await createTestRunner(type, options)
@@ -16,7 +17,7 @@ export default async function(jtest_session) {
 		await runner_instance.init(jtest_session)
 
 		jtest_session.dispatchEvent("runner:spawned", {
-			index: runners.length,
+			index,
 			runner: runner_instance
 		})
 
