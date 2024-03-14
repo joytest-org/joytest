@@ -178,8 +178,8 @@ print.stderr(
 )
 
 print.stderr(
-	`Done in ${millisToSeconds(result.execution_time)} second(s)` +
-	`, made ${result.statistics.number_of_assertions_made} assertion(s)\n`
+	`Made ${result.statistics.number_of_assertions_made} assertion(s)` +
+	`, done in ${millisToSeconds(result.execution_time)} second(s)\n`
 )
 
 let had_error = true
