@@ -67,6 +67,7 @@ jtest_session.on("report", ({id, value}) => {
 			print.stderr(`${progressBar(num_unit_tests_to_run, value)} `)
 		}
 
+		// todo: do not print when num_unit_tests_to_run === value
 		print.stderr(`Running ${value} / ${num_unit_tests_to_run} unit tests`)
 
 		if (num_unit_tests_to_run === value) {
