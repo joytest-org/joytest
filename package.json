@@ -1,6 +1,6 @@
 {
   "name": "joytest",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "A small yet versatile javascript test runner.",
   "author": "Anio Software <info@anio.software>",
   "license": "MIT",
