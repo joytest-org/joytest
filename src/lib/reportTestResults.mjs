@@ -1,3 +1,5 @@
+import {c, print} from "@anio-js-foundation/str-colorize"
+
 function determineFinalVerdict(test_results) {
 	let passed = true, skipped = false
 
@@ -19,11 +21,11 @@ function determineFinalVerdict(test_results) {
 function condenseTestResultVerdicts(test_results) {
 	let ret = []
 
-	const pass = `\u001b[0;32m✔\u001b[0;0m`
-	const fail = `\u001b[0;31m✘\u001b[0;0m`
-	const error = `\u001b[1;33m⚠\u001b[0;0m`
-	const timeout = `\u001b[1;31m⏱\u001b[0;0m`
-	const skipped = `\u001b[1;34m⏵\u001b[0;0m`
+	const pass = c.green(`✔`)
+	const fail = c.red(`✘`)
+	const error = c.bold.yellow(`⚠`)
+	const timeout = c.bold.red(`⏱`)
+	const skipped = c.bold.blue(`⏵`)
 
 	for (const test_result of test_results) {
 		if (test_result.has_error_occurred_during_testing) {
@@ -49,40 +51,43 @@ function indent(text) {
 export default function(jtest_session, test, test_results) {
 	const final_verdict = determineFinalVerdict(test_results)
 
-	process.stderr.write(`${condenseTestResultVerdicts(test_results)}`)
+	print.stderr(`${condenseTestResultVerdicts(test_results)}`)
 
-	if (final_verdict === "error") {
-		process.stderr.write(`\u001b[1;33m`)
-	} else if (final_verdict === "fail") {
-		process.stderr.write(`\u001b[1;31m`)
-	}
+	let report = ``
 
 	if (test.describe_block !== null) {
 		const {label} = test.describe_block
 
-		// todo: fix color reset bug
-		process.stderr.write(` \u001b[1;39m${label} ›\u001b[0;0m`)
+		report += c.bold(` ${label} ›`)
 	}
 
-	process.stderr.write(` ${test.label}`)
+	report += ` ${test.label}`
 
 	if (final_verdict === "pass" || final_verdict === "fail") {
 		let max_time = Math.max.apply(null, test_results.map(result => result.execution_time))
 
-		process.stderr.write(` \u001b[0;90m[${max_time.toFixed(2)}ms]\u001b[0;0m`)
+		report += c.gray(` [${max_time.toFixed(2)}ms]`)
 	}
-
-	process.stderr.write(`\u001b[0;0m\n`)
 
 	for (const result of test_results) {
 		if (jtest_session.options.collapsed) continue
 
 		if (result.has_error_occurred_during_testing) {
-			process.stderr.write(`\u001b[0;33m${indent(result.error)}\u001b[0;0m\n`)
+			report += "\n" + indent(result.error)
 		} else if (result.verdict === "fail") {
-			process.stderr.write(`\u001b[0;31m${indent(result.error)}\u001b[0;0m\n`)
+			report += "\n" + indent(result.error)
 		} else if (result.verdict === "timeout") {
-			process.stderr.write(`\u001b[0;31m${indent(`This test took too long to complete!`)}\u001b[0;0m\n`)
+			report += "\n" + indent(`This test took too long to complete!`)
 		}
 	}
+
+	if (final_verdict === "error") {
+		print.stderr(c.yellow(report))
+	} else if (final_verdict === "fail") {
+		print.stderr(c.red(report))
+	} else {
+		print.stderr(report)
+	}
+
+	print.stderr("\n")
 }

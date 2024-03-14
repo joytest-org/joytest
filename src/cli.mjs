@@ -2,6 +2,7 @@
 import {internal} from "./package.mjs"
 
 const {
+	c, print,
 	createJTestSession,
 	parseCLIArgs,
 	clearCurrentLine,
@@ -12,11 +13,9 @@ const {
 const cli_args = process.argv.slice(2)
 
 if (!cli_args.length) {
-	process.stderr.write(
-		`You are using joytest v${internal.version}.\n\n`
-	)
+	print.stderr(`You are using joytest v${internal.version}.\n\n`)
+	print.stderr(usage)
 
-	process.stderr.write(usage)
 	process.exit(2)
 }
 
@@ -24,12 +23,12 @@ const jtest_session = createJTestSession(
 	await parseCLIArgs(cli_args)
 )
 
-process.stderr.write(
-	`\u001b[1;33m🌞 Joytest v${internal.version}\u001b[0;0m\n`
+print.stderr(
+	c.bold.yellow(`🌞 Joytest v${internal.version}\n`)
 )
 
-process.stderr.write(`Using ${jtest_session.options.parallel} parallel worker(s).\n`)
-process.stderr.write(`Timeout set to ${jtest_session.options.timeout}ms.\n`)
+print.stderr(`Using ${jtest_session.options.parallel} parallel worker(s).\n`)
+print.stderr(`Timeout set to ${jtest_session.options.timeout}ms.\n`)
 
 let all_passing = true
 
@@ -41,31 +40,31 @@ function progressBar(max, current) {
 	let on_chars = Math.floor(n_chars * percentage)
 	let off_chars = n_chars - on_chars
 
-	let color = all_passing ? `96;40m` : `93;40m`
+	let color = all_passing ? `cyan` : `yellow`
 
-	return `[\u001b[${color}${"◼".repeat(on_chars)}\u001b[0;0m\u001b[30;40m${"#".repeat(off_chars)}\u001b[0;0m]`
+	return `[${c.bold[color]("◼".repeat(on_chars))}${" ".repeat(off_chars)}]`
 }
 
 let num_unit_tests_to_run = 0
 
 jtest_session.on("report", ({id, value}) => {
 	if (id === "computed_units") {
-		process.stderr.write(`[report] I got ${value} units to process\n`)
+		print.stderr(`[report] I got ${value} units to process\n`)
 	} else if (id === "number_of_tests_to_run") {
 		num_unit_tests_to_run = value
 
-		process.stderr.write(`[report] I got ${value} unit tests to run\n`)
+		print.stderr(`[report] I got ${value} unit tests to run\n`)
 	} else if (id === "number_of_tests_ran") {
 		clearCurrentLine()
 
 		if (num_unit_tests_to_run !== value) {
-			process.stderr.write(`${progressBar(num_unit_tests_to_run, value)} `)
+			print.stderr(`${progressBar(num_unit_tests_to_run, value)} `)
 		}
 
-		process.stderr.write(`Running ${value} / ${num_unit_tests_to_run} unit tests`)
+		print.stderr(`Running ${value} / ${num_unit_tests_to_run} unit tests`)
 
 		if (num_unit_tests_to_run === value) {
-			process.stderr.write("\n")
+			print.stderr("\n")
 		}
 	} else if (id === "test_result") {
 		clearCurrentLine()
@@ -97,41 +96,41 @@ jtest_session.on("report", ({id, value}) => {
 })
 
 jtest_session.on("pre-runner-spawn", (n_runners) => {
-	process.stderr.write(`Spawning ${n_runners} runners.\n`)
+	print.stderr(`Spawning ${n_runners} runners.\n`)
 })
 
 jtest_session.on("runner:spawned", ({index, runner}) => {
 	const dynamic_props = runner.getDynamicProperties()
 
 	if (runner.type === "browser") {
-		process.stderr.write(`[runner-${index}] Please open http://localhost:${dynamic_props.port}/index.html\n`)
+		print.stderr(`[runner-${index}] Please open http://localhost:${dynamic_props.port}/index.html\n`)
 	} else if (runner.type === "node") {
 		if ("node_binary" in dynamic_props) {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically (using binary at '${dynamic_props.node_binary}')\n`)
+			print.stderr(`[runner-${index}] Node runner will connect automatically (using binary at '${dynamic_props.node_binary}')\n`)
 		} else {
-			process.stderr.write(`[runner-${index}] Node runner will connect automatically once the node binary is ready (requested node version '${dynamic_props.requested_version}')\n`)
+			print.stderr(`[runner-${index}] Node runner will connect automatically once the node binary is ready (requested node version '${dynamic_props.requested_version}')\n`)
 		}
 	}
 })
 
 jtest_session.on("post-runner-spawn", () => {
-	process.stderr.write(`Waiting for runner(s) to connect ...\n`)
+	print.stderr(`Waiting for runner(s) to connect ...\n`)
 })
 
 jtest_session.on("runner:ready", ({index, runner}) => {
 	const dynamic_props = runner.getDynamicProperties()
 
-	process.stderr.write(`[runner-${index}] Connected to the test session!`)
+	print.stderr(`[runner-${index}] Connected to the test session!`)
 
 	if ("concrete_version" in dynamic_props) {
-		process.stderr.write(` Using concrete version '${dynamic_props.concrete_version}'`)
+		print.stderr(` Using concrete version '${dynamic_props.concrete_version}'`)
 	}
 
-	process.stderr.write("\n")
+	print.stderr("\n")
 })
 
 jtest_session.on("ready", () => {
-	process.stderr.write(`All runners connected!\n`)
+	print.stderr(`All runners connected!\n`)
 })
 
 // returns test results
@@ -144,22 +143,22 @@ function millisToSeconds(value) {
 function highlightFailed(value) {
 	if (value === 0) return `${value}`
 
-	return `\u001b[1;31m${value}\u001b[0;0m`
+	return c.bold.red(value)
 }
 
 function highlightError(value) {
 	if (value === 0) return `${value}`
 
-	return `\u001b[1;33m${value}\u001b[0;0m`
+	return c.bold.yellow(value)
 }
 
 function highlightSkipped(value) {
 	if (value === 0) return `${value}`
 
-	return `\u001b[1;34m${value}\u001b[0;0m`
+	return c.bold.blue(value)
 }
 
-process.stderr.write(
+print.stderr(
 	`Ran ${result.statistics.number_of_tests} unit test(s): ` +
 	`${result.statistics.number_of_tests_passed} passed` +
 	`, ${highlightSkipped(result.statistics.number_of_tests_skipped)} skipped` +
@@ -167,20 +166,20 @@ process.stderr.write(
 	`, ${highlightError(result.statistics.number_of_tests_error)} had errors.\n`
 )
 
-process.stderr.write(`Done in ${millisToSeconds(result.execution_time)} second(s)\n`)
+print.stderr(`Done in ${millisToSeconds(result.execution_time)} second(s)\n`)
 
 let had_error = true
 
 if (result.statistics.number_of_tests === 0 && !jtest_session.options["allow-zero-tests"]) {
-	process.stderr.write(
-		`\u001b[1;33m⚠️  No unit tests specified!\u001b[0;0m\n`
+	print.stderr(
+		c.bold.yellow(`⚠️  No unit tests specified!\n`)
 	)
 } else {
 	if (result.successful) {
 		had_error = false
 
-		process.stderr.write(
-			`\u001b[1;32m✔ All tests successfully passed!\u001b[0;0m\n`
+		print.stderr(
+			c.bold.green(`✔ All tests successfully passed!\n`)
 		)
 	}
 }

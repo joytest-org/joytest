@@ -1,3 +1,5 @@
+import {c, print} from "@anio-js-foundation/str-colorize"
+
 import impl_createJTestSession from "./createJTestSession.mjs"
 import impl_expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTestFiles.mjs"
 
@@ -20,6 +22,7 @@ import internal_reportTestResults from "./lib/reportTestResults.mjs"
 import internal_usage from "./usage.mjs"
 
 export const internal = {
+	c, print,
 	version: `%%JOYTEST_RELEASE_VERSION%%`,
 	createJTestSession: internal_createJTestSession,
 	parseCLIArgs: internal_parseCLIArgs,
