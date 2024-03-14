@@ -39,6 +39,8 @@ export default async function(args) {
 			"no-randomize",
 			// Do not show extra information
 			"collapsed",
+			// Used when called from a ci script
+			"ci",
 			// Allow zero unit tests
 			"allow-zero-tests",
 			// Only to be used for testing

@@ -1,4 +1,4 @@
 #!/bin/bash -eufx
 
 npm run prepare
-./dist/cli.mjs . -test-mode-do-not-use
+./dist/cli.mjs . -ci -test-mode-do-not-use

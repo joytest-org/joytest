@@ -55,6 +55,8 @@ jtest_session.on("report", ({id, value}) => {
 
 		print.stderr(`[report] I got ${value} unit tests to run\n`)
 	} else if (id === "number_of_tests_ran") {
+		if (jtest_session.options.ci) return
+
 		clearCurrentLine()
 
 		if (num_unit_tests_to_run !== value) {
@@ -67,7 +69,7 @@ jtest_session.on("report", ({id, value}) => {
 			print.stderr("\n")
 		}
 	} else if (id === "test_result") {
-		clearCurrentLine()
+		if (!jtest_session.options.ci) clearCurrentLine()
 
 		const all_runners_done = value.results.filter(result => result === false).length === 0
 
