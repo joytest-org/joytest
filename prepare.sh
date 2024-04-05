@@ -1,9 +1,9 @@
 #!/bin/bash -eufx
 
-./node_modules/.bin/npm-package-bundler .
+./node_modules/.bin/vipen .
 
 cp src/cli.mjs dist/cli.mjs
 
-mv dist/suite/index.mjs dist/suite.mjs
+mv dist/additional_entry_points/suite/package.min.mjs dist/suite.mjs
 
-rm -r dist/suite
+rm -r dist/additional_entry_points

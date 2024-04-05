@@ -1,3 +1,5 @@
+import {loadProjectPackageJSON} from "@vipen/target-js"
+
 import {c, print, forceColors} from "@anio-js-foundation/str-colorize"
 
 import impl_createJTestSession from "./createJTestSession.mjs"
@@ -6,8 +8,10 @@ import impl_expandAndValidateInputTestFiles from "./lib/expandAndValidateInputTe
 export const createJTestSession = impl_createJTestSession
 export const expandAndValidateInputTestFiles = impl_expandAndValidateInputTestFiles
 
+const version = loadProjectPackageJSON().version
+
 export default {
-	version: `%%JOYTEST_RELEASE_VERSION%%`,
+	version,
 	createJTestSession,
 	expandAndValidateInputTestFiles
 }
@@ -23,7 +27,7 @@ import internal_usage from "./usage.mjs"
 
 export const internal = {
 	c, print, forceColors,
-	version: `%%JOYTEST_RELEASE_VERSION%%`,
+	version,
 	createJTestSession: internal_createJTestSession,
 	parseCLIArgs: internal_parseCLIArgs,
 	clearCurrentLine: internal_clearCurrentLine,

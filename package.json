@@ -9,7 +9,7 @@
     "url": "git+https://github.com/joytest-org/joytest.git"
   },
   "exports": {
-    ".": "./dist/package.mjs",
+    ".": "./dist/package.min.mjs",
     "./suite": "./dist/suite.mjs",
     "./package.json": "./package.json"
   },
@@ -29,12 +29,13 @@
     "@anio-js-foundation/str-colorize": "^2.1.0",
     "@anio-node-foundation/cli-parse-args": "^3.0.0",
     "@anio-node-foundation/fs-scandir": "^3.0.0",
-    "@anio-software/npm-package-bundler": "^1.0.0",
     "@joytest/create-runner": "^1.1.0",
-    "@joytest/test-api": "^3.1.0"
+    "@joytest/test-api": "^3.1.0",
+    "@vipen/target-js": "^0.17.0",
+    "vipen": "^0.2.1"
   },
   "files": [
-    "./dist/package.mjs",
+    "./dist/package.min.mjs",
     "./dist/suite.mjs",
     "./dist/cli.mjs",
     "./LICENSE"
