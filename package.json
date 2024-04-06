@@ -32,7 +32,7 @@
     "@joytest/create-runner": "^1.1.0",
     "@joytest/test-api": "^3.1.0",
     "@vipen/target-js": "^0.18.0",
-    "vipen": "^0.2.2"
+    "vipen": "^0.2.4"
   },
   "files": [
     "./dist/package.min.mjs",
