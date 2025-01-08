@@ -141,3 +141,11 @@ export default suite
 
 - Implement rest of the feature set.
 - Session Server (graphical web view), not a priority.
+
+## 🌱 About the author
+
+This software is written and maintained by [anio.software](https://github.com/anio-software).
+
+An organization that aims to write clean code, eliminate technical debt and is selective about its dependencies.
+
+🇨🇭 [anio.software](https://anio.software) is an upcoming swiss based software author.
