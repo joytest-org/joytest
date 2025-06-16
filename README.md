@@ -4,7 +4,10 @@
 
 A small yet versatile javascript test runner.
 
-> [!WARNING]  
+> [!NOTE]
+> This project is NOT dead, I'm just migrating everything from JavaScript to TypeScript.
+
+> [!WARNING]
 > This project is far from production ready. API and behaviour might change without notice.
 
 ```
